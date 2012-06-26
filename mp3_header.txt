@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+<title>Valentine Silvansky: some mp3s</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body link="black" vlink="#555555" alink="gray" bgcolor="white">
+<table width="100%" border="2" cellspacing="4" cellpadding="4">
+
+<tr>
+<td align="center" width="150"></td>
+<td align="center" style="padding-left: 10px" height="75">
+<h1>Тут собраны некоторые аудиозаписи.</h1>
+</td>
+<td align="center" width="150"></td>
+</tr>
+
+<tr>
+<td align="center" width="150"></td>
+<td align="left" style="padding-left: 10px">
