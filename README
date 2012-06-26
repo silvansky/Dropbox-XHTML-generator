@@ -1,0 +1,21 @@
+Dropbox XHTML generator
+
+Usage:
+	./gen.sh [txt|mp3]
+
+This script should be placed in ~/Dropbox/somedir/gen.sh.
+All the templates (*_[header|footer].txt) should be placed in the same dir.
+
+Currently supported formats: *.txt, *.mp3
+
+For text documents only direct links are generated.
+
+For MP3s there is embedded Flash-player provided by http://flv-mp3.com/ru/mp3/ - it's free and easy!
+
+TODO:
+
+Support for *.jpg (with auto-generated previews in ../Public/jpg/thumbs/).
+
+Support for videos (with embedded player by flv-mp3.com)
+
+Support for common files, building just a file-index for the folder. This might be a separate option.
