@@ -3,5 +3,6 @@
 </tr>
 </table>
 <p><font color="gray">&#169; 2012 v.silvansky</font></p>
+<p><font color="gray">Player provided by <a href="http://flv-mp3.com/ru/mp3/">flv-mp3.com</a></font></p>
 </body>
 </html>
