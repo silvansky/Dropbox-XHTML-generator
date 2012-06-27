@@ -53,8 +53,10 @@ for i in *.$DIR; do
 		echo " <i>${STRLEN}</i>" >> $FILE
 		ENCODED="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$i")"
 		echo "<br/>
-		<object type=\"application/x-shockwave-flash\" data=\"${PLAYER_SRC}\" height=\"${PLAYER_HEIGHT}\" width=\"${PLAYER_WIDTH}\"><param name=\"wmode\" 
-		value=\"transparent\" /><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowScriptAccess\" value=\"always\" />
+		<object type=\"application/x-shockwave-flash\" data=\"${PLAYER_SRC}\" height=\"${PLAYER_HEIGHT}\" width=\"${PLAYER_WIDTH}\">
+		<param name=\"wmode\" value=\"transparent\" />
+		<param name=\"allowFullScreen\" value=\"true\" />
+		<param name=\"allowScriptAccess\" value=\"always\" />
 		<param name=\"movie\" value=\"${PLAYER_SRC}\" /><param name=\"FlashVars\"
 		value=\"way=${ENCODED}&amp;swf=${PLAYER_SRC}&amp;w=${PLAYER_WIDTH}&amp;h=${PLAYER_HEIGHT}&amp;time_seconds=${LEN}&amp;autoplay=0&amp;q=&amp;skin=grey&amp;volume=${PLAYER_VOLUME}&amp;comment=\" />
 		</object>" >> $FILE
