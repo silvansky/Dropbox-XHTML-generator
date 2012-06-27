@@ -119,7 +119,7 @@ for i in $TARGET_FILES; do
 		fi
 		THUMB_FILE=${THUMBS_DIR}/$i
 		sips -Z ${THUMBS_SIZE} $i --out ${THUMB_FILE} &> /dev/null
-		echo "<br/><a href='$i'><img src='${THUMB_FILE}' /></a>" >> $FILE
+		echo "<br/><a href='$i' target='_blank'><img src='${THUMB_FILE}' /></a>" >> $FILE
 	fi
 	echo "</p>" >> $FILE
 done
