@@ -1,0 +1,7 @@
+</td>
+<td align="center" width="150"></td>
+</tr>
+</table>
+<p><font color="gray">&#169; 2012 v.silvansky</font></p>
+</body>
+</html>
