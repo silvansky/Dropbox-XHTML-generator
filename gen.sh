@@ -3,6 +3,15 @@
 TYPE=$1
 DIR=$1
 FILE_EXTS=""
+FIND_DEPTH=$2
+
+if [ "${FIND_DEPTH}" == "" ]; then
+	FIND_DEPTH=1
+fi
+
+if [ "$TYPE" == "" ]; then
+	TYPE=txt
+fi
 
 if [ "$TYPE" == "mp3" ]; then
 	DIR=mp3
@@ -62,7 +71,7 @@ function hms {
 
 function listFiles {
 	for ext in $FILE_EXTS; do
-		local FILE_LIST=`find . -iname "*.$ext"`
+		local FILE_LIST=`find . -maxdepth ${FIND_DEPTH} -iname "*.${ext}"`
 		echo ${FILE_LIST}
 	done
 }
