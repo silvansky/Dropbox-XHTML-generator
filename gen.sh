@@ -62,7 +62,7 @@ function hms {
 
 function listFiles {
 	for ext in $FILE_EXTS; do
-		local FILE_LIST=`find . -maxdepth 1 -iname "*.$ext" | cut -d "/" -f 2`
+		local FILE_LIST=`find . -iname "*.$ext"`
 		echo ${FILE_LIST}
 	done
 }
@@ -77,7 +77,10 @@ function trim {
 TARGET_FILES=$(listFiles)
 echo "Target: $TYPE, extensions: $FILE_EXTS, files: ${TARGET_FILES}"
 
-for i in $TARGET_FILES; do
+for i in ${TARGET_FILES}; do
+	# removing "./" from file name
+	i=${i:2}
+	echo $i
 	# common processing
 	echo "Processing file $i..."
 	SIZE=`du -h "$i" | cut -f 1`
@@ -91,6 +94,12 @@ for i in $TARGET_FILES; do
 		LEN=`afinfo -r "$i" | grep duration | cut -d ' ' -f 3 | cut -d '.' -f 1`
 		STRLEN=$(hms $LEN)
 		echo " <i>${STRLEN}</i>" >> $FILE
+		# mp3 tag (using mp3info utility)
+		TAGS=`mp3info -p "%a - %t" $i | iconv -f cp1251`
+		TR_TAGS=$(trim $TAGS)
+		if [ "$TR_TAGS" != "-" ]; then
+			echo "<br/><b>$TAGS</b>" >> $FILE
+		fi
 		# mp3 player
 		ENCODED="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$i")"
 		echo "<br/>
