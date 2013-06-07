@@ -71,8 +71,11 @@ function hms {
 
 function listFiles {
 	for ext in $FILE_EXTS; do
-		local FILE_LIST=`find . -maxdepth ${FIND_DEPTH} -iname "*.${ext}"`
-		echo ${FILE_LIST}
+		#local FILE_LIST=`find . -maxdepth ${FIND_DEPTH} -iname "*.${ext}" -print0 | while read -d $'\0' file; do echo '\"$file\"'; done`
+		#echo ${FILE_LIST}
+		find . -maxdepth ${FIND_DEPTH} -iname "*.${ext}" | while read -r file ; do
+			printf "%s\n" "$file"
+		done
 	done
 }
 
@@ -86,10 +89,13 @@ function trim {
 TARGET_FILES=$(listFiles)
 echo "Target: $TYPE, extensions: $FILE_EXTS, files: ${TARGET_FILES}"
 
+OLDIFS=$IFS
+IFS=$'\n'
+
 for i in ${TARGET_FILES}; do
 	# removing "./" from file name
 	i=${i:2}
-	echo $i
+	echo "Processing file $i"
 	# common processing
 	echo "Processing file $i..."
 	SIZE=`du -h "$i" | cut -f 1`
@@ -141,6 +147,8 @@ for i in ${TARGET_FILES}; do
 	fi
 	echo "</p>" >> $FILE
 done
+
+IFS=$OLDIFS
 
 cat $CDIR/$FOOTER >> $FILE
 FILESIZE=$(du -h "$FILE" | cut -f 1)
